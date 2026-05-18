@@ -1,0 +1,15 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = Counter(nums)
+        barrel = [[] for _ in range(len(nums)+1)]
+        for num, freq in count.items():
+            barrel[freq].append(num)
+        res = []
+        for freq in range(len(barrel)-1,-1,-1):
+            for num in barrel[freq]:
+                res.append(num)
+                if len(res) == k:
+                    return res
+
+
+        
